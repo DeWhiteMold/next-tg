@@ -1,14 +1,19 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import styles from './styles.module.scss'
 import WebApp from '@twa-dev/sdk'
 
-const dashboard: FC = () => {
+const Dashboard: FC = () => {
+  const [id, setId] = useState<number>(0)
+  useEffect(() => {
+    // Client-side-only code
+    setId(WebApp.initDataUnsafe.user?.id || 0)
+  }, [])
   return (
     <div className={`${styles.name} + ${styles.large_name}`}>
-      DASHBOARD{WebApp.initDataUnsafe.user?.id}
+      DASHBOARD{id}
       <div className={styles.second_name}></div>
     </div>
   )
 }
 
-export default dashboard
+export default Dashboard
