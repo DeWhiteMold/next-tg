@@ -1,3 +1,5 @@
+'use client'
+
 import React, { FC, useEffect, useState } from 'react'
 import styles from './styles.module.scss'
 import WebApp from '@twa-dev/sdk'
@@ -5,7 +7,6 @@ import WebApp from '@twa-dev/sdk'
 const Dashboard: FC = () => {
   const [id, setId] = useState<number>(0)
   useEffect(() => {
-    // Client-side-only code
     setId(WebApp.initDataUnsafe.user?.id || 0)
   }, [])
   return (
