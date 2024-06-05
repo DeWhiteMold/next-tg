@@ -7,7 +7,10 @@ import WebApp from '@twa-dev/sdk'
 const Dashboard: FC = () => {
   const [id, setId] = useState<number>(0)
   useEffect(() => {
-    setId(WebApp.initDataUnsafe.user?.id || 0)
+    if (typeof window !== "undefined") {
+      setId(WebApp.initDataUnsafe.user?.id || 0)
+    }
+    
   }, [])
   return (
     <div className={`${styles.name} + ${styles.large_name}`}>
