@@ -14,7 +14,7 @@ const Dashboard: FC = () => {
   }, [])
   return (
     <div className={`${styles.name} + ${styles.large_name}`}>
-      DASHBOARD{id}
+      DASHBOARD{typeof window !== "undefined" && WebApp.initDataUnsafe.user?.id}
       <div className={styles.second_name}></div>
     </div>
   )
